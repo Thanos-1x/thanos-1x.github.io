@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hash Generator</title>
+</head>
+<body>
+    <h1>Hash Generator</h1>
+    <div id="output"></div>
+
+    <script>
+        function formatAndCapitalize(text) {
+            var first20Chars = text.substring(0, 20);
+            var capitalizedText = first20Chars.toUpperCase();
+            var formattedText = capitalizedText.match(/.{1,5}/g).join('-');
+            return formattedText;
+        }
+
+        var currentDateTime = new Date();
+        var day = currentDateTime.getDate();
+        var hours = currentDateTime.getHours();
+        var min = currentDateTime.getMinutes();
+
+        var output = document.getElementById('output');
+
+        
+        
+
+var currentDate = new Date();
+var day = currentDate.getDate();
+var hours = currentDate.getHours();
+
+
+for (let i of [1,2,3,4,5]) {
+var textToHash = day.toString() + hours.toString() + min.toString()[0] + i.toString();
+var buffer = new TextEncoder().encode(textToHash);
+crypto.subtle.digest('SHA-256', buffer).then(function(hashBuffer) {
+  var hashArray = Array.from(new Uint8Array(hashBuffer));
+  var hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+  hashedText = formatAndCapitalize(hashHex);
+  output.innerHTML += "kay " +hashedText+"<br>";
+ 
+   
+}).catch(function(error) {
+  console.error("حدث خطأ:", error);
+})
+    }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
