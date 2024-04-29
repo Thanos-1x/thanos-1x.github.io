@@ -1,1 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحويل الدفع عبر فودافون كاش</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body dir="rtl">
+    <h2>تحويل الدفع عبر فودافون كاش</h2>
+    <img src="https://eg1xbet.com/paysystems/xpay/images/money/orange_mazda.png" alt="لوجو" id="logo">
+    <br><br>
+    <div id="banner">يجب تحويل قبل :<span id="hours">01</span>:<span id="minutes">00</span>:<span id="seconds">00</span></div>
+    <br><br>
+    <form action="/process_payment" method="post" onsubmit="showConfirmation(event)">	  <br>
+	  <div class="payment_modal_input payment_modal_input--html">
+		<b>رقم فودافون كاش</b>
+		<span></span>
+		<span id="vodafone_cash_code" class="modal-message-address">01210482049</span>
+		<span class="copy_content_btn modal-message-btn" title="انسخ" id="copyButton">&#128203;</span>
+		<span class="modal-message-text" style="display: none">تم النسخ</span>
+		<b></b>
+	  </div>
+	  <br>
+	  <input type="tel" id="phone_number" name="phone_number" placeholder="اكتب رقمك الذي أرسلت من:" required><br><br>
+	  <label class="package-label">اختر الباقة: احصل علي خصم 50%</label>
+	  <select name="package" id="packageSelect" onchange="calculateDiscount()">
+		<option value="package1">باقة 1 - 1500 ج.م ساعتين</option>
+		<option value="package2">باقة 2 - 5000 ج.م 12 ساعه</option>
+		<option value="package3">باقة 3 - 8000 ج.م 24 ساعه</option>
+	  </select><br>
+	  <p id="totalPrice">المبلغ الإجمالي بعد الخصم: 750 ج.م</p>
+	  
+	  <br>
+	  <input type="email" id="email" name="email" placeholder="البريد الإلكتروني الخاص بك" required><br><br>
+	  <label for="screenshot">من فضلك قم بتحميل السكرين شوت لعملية التحويل الناجحة</label><br>
+	  <input type="file" id="screenshot" name="screenshot" accept="image/*" required><br><br>
+	  <button type="submit">تأكيد التحويل</button>	
+	  </form>
+	<div id="myModal" class="modal">
+	  <div class="modal-content">
+		<span class="close">&times;</span>
+		<h3>تم تأكيد الدفع بنجاح!</h3>
+		<h4>سيتم ارسل كود تفعيل البريد الإلكتروني الخاص بك</h4>
+		<p>شكرًا لكم على ثقتكم بنا. لقد تم استلام المبلغ بنجاح.</p>
+	  </div>
+    </div>
 
+<script>
+        // استدعاء النافذة المنبثقة عند اكتمال عملية الدفع
+        function showConfirmation(event) {
+            event.preventDefault(); // منع تحميل الصفحة
+            var modal = document.getElementById("myModal");
+            modal.style.display = "block";
+
+            // عند النقر على (x)، إغلاق النافذة المنبثقة
+            var span = document.getElementsByClassName("close")[0];
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // عند النقر خارج النافذة المنبثقة، إغلاقها
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        }
+</script>
+
+        
+    <script src="script.js"></script>
+<script>
+  
+  
+  
+        function calculateDiscount() {
+            const packageSelect = document.getElementById('packageSelect');
+            const selectedPackage = packageSelect.options[packageSelect.selectedIndex].value;
+            let totalPrice;
+
+            switch (selectedPackage) {
+                case 'package1':
+                    totalPrice = 1500; // تعديل السعر حسب باقة 1
+                    break;
+                case 'package2':
+                    totalPrice = 5000; // تعديل السعر حسب باقة 2
+                    break;
+                case 'package3':
+                    totalPrice = 8000; // تعديل السعر حسب باقة 3
+                    break;
+                default:
+                    totalPrice = 0;
+            }
+
+            // حساب الخصم بنسبة 50%
+            const discountedPrice = totalPrice * 0.5;
+
+            // عرض السعر الإجمالي مع الخصم
+            document.getElementById('totalPrice').textContent = 'المبلغ الإجمالي بعد الخصم: ' + discountedPrice + ' جنيه';
+        }
+
+        function submitForm() {
+            // إضافة الشفرة لإرسال البيانات إلى الخادم
+            document.getElementById("paymentForm").submit();
+        }
+
+        </script>
+  </body></html>

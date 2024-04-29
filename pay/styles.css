@@ -1,0 +1,109 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f2f2f2;
+	body {
+    background-color: #f0f0f0; /* مثال: خلفية بلون رمادي فاتح */
+}
+}
+
+h2 {
+    color: #007bff;
+}
+
+form {
+    margin: 0 auto;
+    width: 300px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="file"],
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#banner {
+    /*position: fixed;
+   /* top: 100px; /* ارتفاع البانر من الأعلى بـ 10 بكسل 
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;*/
+    color: #ff0000;
+    /*z-index: 999; /* لضمان ظهوره فوق أي شيء آخر */
+}
+#logo {
+    display: block;
+    margin: 0 auto;
+    width: 100px; /* تعديل العرض والارتفاع وفقًا لحجم اللوجو الخاص بك */
+    height: auto;
+}
+
+
+/* ستايلات للنافذة المنبثقة */
+.modal {
+    display: none; /* أولاً تكون مخفية حتى تتم عرضها بشكل مناسب */
+    position: fixed; /* تحديد الوضع الثابت حتى تظل في مكانها عند التمرير */
+    z-index: 1; /* جعلها فوق جميع العناصر الأخرى */
+    left: 0;
+    top: 0;
+    width: 100%; /* تغطية الشاشة بالكامل */
+    height: 100%;
+    overflow: auto; /* إمكانية التمرير إذا كانت النافذة طويلة جداً */
+    background-color: rgb(0,0,0); /* لون الخلفية */
+    background-color: rgba(0,0,0,0.4); /* لون الخلفية مع شفافية */
+}
+
+/* محتوى النافذة المنبثقة */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* توسيط النافذة عمودياً وأفقياً */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* عرض النافذة */
+}
+
+/* زر لإغلاق النافذة */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
