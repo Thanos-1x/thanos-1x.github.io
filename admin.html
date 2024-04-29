@@ -48,7 +48,51 @@
 	
   </body>
 <script>
-    
+    let hours = parseInt(localStorage.getItem('hours')) || 24;
+let minutes = parseInt(localStorage.getItem('minutes')) || 0;
+let seconds = parseInt(localStorage.getItem('seconds')) || 0;
+
+const hoursElement = document.getElementById('hours');
+const minutesElement = document.getElementById('minutes');
+const secondsElement = document.getElementById('seconds');
+
+function updateTimer() {
+    hoursElement.textContent = hours.toString().padStart(2, '0');
+    minutesElement.textContent = minutes.toString().padStart(2, '0');
+    secondsElement.textContent = seconds.toString().padStart(2, '0');
+
+    if (hours === 0 && minutes === 0 && seconds === 0) {
+        document.getElementById('banner').style.color = '#000000';
+        document.getElementById('banner').textContent = 'انتهى التأخير!';
+    } else {
+        setTimeout(updateTimer, 1000);
+        decrementTime();
+    }
+}
+
+function decrementTime() {
+    if (seconds > 0) {
+        seconds--;
+    } else if (minutes > 0) {
+        minutes--;
+        seconds = 59;
+    } else if (hours > 0) {
+        hours--;
+        minutes = 59;
+        seconds = 59;
+    }
+
+    // حفظ العداد في localStorage
+    localStorage.setItem('hours', hours);
+    localStorage.setItem('minutes', minutes);
+    localStorage.setItem('seconds', seconds);
+}
+
+// تحديث العداد عند تحميل الصفحة
+updateTimer();
+</script>
+<script>
+  
   
   
   		
@@ -91,58 +135,13 @@ new function() {
 	var onError = function(event) {
 		alert(event.data);
 	}
-	
-	
-	
-	
-let hours = 0; // لا داعي لتأخير الساعات
-let minutes = 10; // تعيين التأخير إلى 10 دقائق
-let seconds = 00;
-
-const hoursElement = document.getElementById('hours');
-const minutesElement = document.getElementById('minutes');
-const secondsElement = document.getElementById('seconds');
-
-function updateTimer() {
-    hoursElement.textContent = hours.toString().padStart(2, '0');
-    minutesElement.textContent = minutes.toString().padStart(2, '0');
-    secondsElement.textContent = seconds.toString().padStart(2, '0');
-
-    if (hours === 0 && minutes === 0 && seconds === 0) {
-        document.getElementById('banner').style.color = '#000000';
-        document.getElementById('banner').textContent = 'انتهى الوقت ';
-	 document.getElementById('topSection').innerText = "انتهي الهاك"; 
-	    close();
-    } else {
-        setTimeout(updateTimer, 1000);
-        decrementTime();
-	
-    }
-}
-
-function decrementTime() {
-    if (seconds > 0) {
-        seconds--;
-    } else if (minutes > 0) {
-        minutes--;
-        seconds = 59;
-    }
-
-    // حفظ العداد في localStorage
-    localStorage.setItem('hours', hours);
-    localStorage.setItem('minutes', minutes);
-    localStorage.setItem('seconds', seconds);
-}
-open(); 
-// استدعاء الدالة للبدء في التحديث
-updateTimer();
-  }
-	
+	open()
+	}
 	function send(id) {
 	document.getElementById('topSection').innerText = id
 		}
 </script>
-  
+  </body>
 
   
 
